@@ -2,20 +2,21 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const referralRoutes = require("./referralRoutes");
+require("dotenv").config();
 
 const app = express();
-
-const allowedOrigin = process.env.FRONTEND_ORIGIN?.trim(); 
+const allowedOrigins = [process.env.FRONTEND_URL]; 
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || origin === allowedOrigin) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
   methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
   credentials: true,
 }));
 
