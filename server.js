@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const referralRoutes = require("./referralRoutes");
 
 const app = express();
-const cors = require("cors");
 app.use(cors({ origin: "*" })); // Allow all domains
 
 app.use(bodyParser.json());
