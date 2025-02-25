@@ -1,6 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
-const sendReferralEmail = require("../backend/nodemailer");
+const sendReferralEmail = require("./nodemailer");
 
 const prisma = new PrismaClient();
 const router = express.Router();
