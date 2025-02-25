@@ -4,9 +4,14 @@ const bodyParser = require("body-parser");
 const referralRoutes = require("./referralRoutes");
 
 const app = express();
-app.use(cors());
+const cors = require("cors");
+app.use(cors({ origin: "*" })); // Allow all domains
+
 app.use(bodyParser.json());
 
 app.use("/api", referralRoutes);
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
+    console.log("Server running...");
+  });
+  
