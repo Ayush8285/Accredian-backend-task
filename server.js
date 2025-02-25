@@ -6,13 +6,16 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(
+const options = [
   cors({
-    origin: "https://accredian-frontend-task-ten-alpha.vercel.app",
-    methods: "GET, POST, PUT, DELETE",
-    allowedHeaders: "Content-Type, Authorization",
+    origin: '*',
+    methods: '*',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
-);
+];
+
+app.use(options);
 
 app.use(bodyParser.json());
 
